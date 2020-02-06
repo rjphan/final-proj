@@ -1,0 +1,12 @@
+---
+title: "Final Proj"
+author: "Rachel Phan"
+date: "2/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+

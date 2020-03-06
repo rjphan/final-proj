@@ -7,5 +7,51 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+library(pdftools)
+library(stringr)
+```
+
+# GitHub Repo Link
+
+https://github.com/rjphan/ms_4.git
+
+# Data
+
+```{r Clery data from HUPD}
+
+# Data from https://www.hupd.harvard.edu/files/hupd/files/19_asr_cambridge_campus_criminal_statistics.pdf, HUPD: "Annual Security Report 2019"
+
+hupd_clery_report <- pdf_text("19_asr_cambridge_campus_criminal_statistics.pdf") %>% 
+  read_lines()
+
+View(hupd_clery_report)
+
+
+```
+
+```{r dataset one, include = FALSE}
+
+# Data from https://www.bjs.gov/index.cfm?ty=tp&tid=317, the Bureau of Justice Statisics: "
+
+sex_assault_location_and_time <- read_csv("rsavcaf9513at05.csv")
+
+sex_assault_location_and_time
+
+View(sex_assault_location_and_time)
+
+```
+
+```{r}
+
+# Data from https://www.bjs.gov/index.cfm?ty=tp&tid=317, the Bureau of Justice Statistics: "Criminal Victimization, 2014"
+
+criminal_rates <- read_csv("cv14at05.csv")
+
+criminal_rates
+
+View(criminal_rates)
+
 ```
 

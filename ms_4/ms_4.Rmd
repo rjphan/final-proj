@@ -75,36 +75,18 @@ criminal_rates <- read_csv("cv14at05.csv", skip = 10)
 
 sapply(criminal_rates, class)
 
-criminal_rates <- criminal_rates %>% 
+criminal_rates_clean <- criminal_rates %>% 
   mutate("type_of_crime" = X1)
+
+criminal_rates_clean %>% 
+  factor("type_of_crime", levels = c("Violent  Crime", "Serious Violent Crime", "Property Crime"))
 
 criminal_rates_clean$type_of_crime = as.factor(criminal_rates_clean$type_of_crime) 
 
-criminal_rates_clean %>% 
-  factor(type_of_crime, levels = c("Violent  Crime", "Serious Violent Crime", "Property Crime"))
-
-criminal_rates_clean <- criminal_rates_clean %>% 
+criminal_rates_clean <- criminal_rates %>% 
   select(-X1, -X7)
   
 View(criminal_rates_clean)
-
-```
-
-```{r sexual assault, rape, and sexual battery}
-
-# Data from https://www.bjs.gov/index.cfm?ty=tp&tid=914 and
-# https://www.bjs.gov/content/pub/pdf/App_E_Sex-Assault-Rape-Battery.pdf, the
-# Bureau of Justice Statistics: "Appendix E: Data Tables for Sexual Assault,
-# Rape, and Sexual Battery"
-
-# I also read in some data that I thought would be relevant, and tried to clean
-# it up a little bit.
-
-sex_assault_rape_battery <- pdf_text("App_E_Sex-Assault-Rape-Battery.pdf") %>% 
-  read_lines() %>% 
-  strsplit(split = "\n")
-
-View(sex_assault_rape_battery)
 
 ```
 
